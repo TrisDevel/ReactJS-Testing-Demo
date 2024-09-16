@@ -5,7 +5,7 @@ import App from "./App";
 // Unit Test
 test("renders CICD text", () => {
   render(<App />);
-  const linkElement = screen.getByText(/CICD Testing. Bui Trong Tri/i);
+  const linkElement = screen.getByText('Tuyen');
   expect(linkElement).toBeInTheDocument();
 });
 
@@ -36,7 +36,7 @@ test("navigates to About page", () => {
 });
 
 test("navigates to Contact page and submits form", () => {
-  render(<App />);
+render(<App />);
   const contactLink = screen.getByText(/Contact/i);
   fireEvent.click(contactLink);
   const nameInput = screen.getByLabelText(/Name/i);
