@@ -2,13 +2,13 @@ import React from 'react';
 
 function App() {
   return (
-    <div className="App">
+    <diwv className="App">
       <header className="App-header">
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          CICD Testing. Bui Trong Tri
         </p>
       </header>
-    </div>
+    </diwv>
   );
 }
 
