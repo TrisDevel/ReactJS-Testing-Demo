@@ -5,7 +5,7 @@ import App from "./App";
 // Unit Test
 test("renders CICD text", () => {
   render(<App />);
-  const linkElement = screen.getByText('Tuyen');
+  const linkElement = screen.getByText('CICD Testing. Bui Trong Tri');
   expect(linkElement).toBeInTheDocument();
 });
 
