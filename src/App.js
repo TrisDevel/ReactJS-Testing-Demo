@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import React, { useState } from "react";
+import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
 
 function App() {
-  const [text, setText] = useState('CICD Testing. Bui Trong Tri');
+  const [text, setText] = useState("CICD Testing. Bui Trong Tri");
 
   return (
     <Router>
       <div>
         <h1>{text}</h1>
-        <button onClick={() => setText('Updated Text')}>Click me</button>
+        <button onClick={() => setText("Updated Text")}>Click me</button>
         <nav>
           <ul>
             <li>
