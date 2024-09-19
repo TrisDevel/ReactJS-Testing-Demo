@@ -24,8 +24,8 @@ jobs:
           LANGUAGE: Vietnamese  # Đổi ngôn ngữ sang tiếng Việt
           OPENAI_API_ENDPOINT: https://api.openai.com/v1
           MODEL: gpt-3.5-turbo
-          PROMPT: "Vui lòng kiểm tra xem có bất kỳ sự nhầm lẫn hoặc bất thường nào trong các thay đổi code sau đây:"
+          PROMPT: "Vui lòng kiểm tra và đề xuất cải thiện cho các thay đổi code sau:"
           top_p: 1
-          temperature: 0.7  # Giảm xuống để có kết quả ổn định hơn
-          max_tokens: 10000
+          temperature: 0.5  # Giảm xuống để có kết quả ổn định hơn
+          max_tokens: 5000
           MAX_PATCH_LENGTH: 10000
