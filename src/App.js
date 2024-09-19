@@ -17,11 +17,15 @@ function App() {
             <li>
               <Link to="/contact">Contact</Link>
             </li>
+            <li>
+              <Link to="/blog">Blog</Link>
+            </li>
           </ul>
         </nav>
         <Routes>
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/blog" element={<Blog />} />
         </Routes>
       </div>
     </Router>
@@ -50,6 +54,15 @@ function Contact() {
       <button type="submit">Submit</button>
     </form>
   );
+}
+
+function Blog() {
+  return (
+    <div>
+      <h2>Blog</h2>
+      <p>Welcome to my blog</p>
+    </div>
+  )
 }
 
 export default App;
