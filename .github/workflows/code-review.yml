@@ -5,27 +5,29 @@ permissions:
   pull-requests: write
 
 on:
-  push:
-    branches:
-      - main  # Thêm các nhánh bạn muốn kích hoạt code review
-  pull_request:
-    types: [opened, reopened, synchronize]
+  on:
+    pull_request:
+      types: [opened, reopened, synchronize]
+    push:
+      branches:
+        - main
+        - develop
 
 jobs:
-  code-review:
+  test:
+    # if: ${{ contains(github.event.*.labels.*.name, 'gpt review') }} # Optional; to run only when a label is attached
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
       - uses: anc95/ChatGPT-CodeReview@main
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           # Optional
-          LANGUAGE: Vietnamese  # Đổi ngôn ngữ sang tiếng Việt
+          LANGUAGE: English
           OPENAI_API_ENDPOINT: https://api.openai.com/v1
-          MODEL: gpt-3.5-turbo
-          PROMPT: "Vui lòng kiểm tra xem có bất kỳ sự nhầm lẫn hoặc bất thường nào trong các thay đổi code sau đây:"
-          top_p: 1
-          temperature: 0.7  # Giảm xuống để có kết quả ổn định hơn
+          MODEL: gpt-3.5-turbo # https://platform.openai.com/docs/models
+          PROMPT: Please review the following code changes and provide feedback on any potential issues or improvements. # example: Please check if there are any confusions or irregularities in the following code diff:
+          top_p: 1 # https://platform.openai.com/docs/api-reference/chat/create#chat/create-top_p
+          temperature: 1 # https://platform.openai.com/docs/api-reference/chat/create#chat/create-temperature
           max_tokens: 10000
-          MAX_PATCH_LENGTH: 10000
+          MAX_PATCH_LENGTH: 10000 # if the patch/diff length is large than MAX_PATCH_LENGTH, will be ignored and won't review. By default, with no MAX_PATCH_LENGTH set, there is also no limit for the patch/diff length.
