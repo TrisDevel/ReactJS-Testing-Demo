@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
+import Button from './components/Button';
 
 function App() {
   const [text, setText] = useState("CICD Testing. Bui Trong Tri");
-
+  const handleClick = () => {
+    alert('Button clicked!');
+  };
   return (
+    
     <Router>
       <div>
         <h1>{text}</h1>
@@ -57,21 +61,19 @@ function Contact() {
 }
 
 function Blog() {
+  const handleClick = () => {
+    alert('Button clicked!');
+  };
+
   return (
-    <div>
-      <h2>Blog</h2>
-      <p>Welcome to my blog</p>
+    <div className="App">
+      <header className="App-header">
+        <h1>React Testing Demo</h1>
+        <Button label="Click me!" onClick={handleClick} />
+      </header>
     </div>
-  )
+  );
 }
 
-function Home() {
-  return (
-    <div>
-      <h2>Blog</h2>
-      <p>Welcome to my home page</p>
-    </div>
-  )
-}
 
 export default App;
