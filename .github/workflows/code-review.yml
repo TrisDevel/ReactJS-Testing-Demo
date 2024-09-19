@@ -8,6 +8,7 @@ on:
   push:
     branches:
       - main  # Thêm các nhánh bạn muốn kích hoạt code review
+      - 'develop/**'  # Thêm pattern cho các nhánh feature
   pull_request:
     types: [opened, reopened, synchronize]
 
