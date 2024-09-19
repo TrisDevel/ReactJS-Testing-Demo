@@ -65,4 +65,13 @@ function Blog() {
   )
 }
 
+function Home() {
+  return (
+    <div>
+      <h2>Blog</h2>
+      <p>Welcome to my home page</p>
+    </div>
+  )
+}
+
 export default App;
