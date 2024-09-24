@@ -1,13 +1,9 @@
-name: CI
+name: Test and Report
 
-on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+on: [push, pull_request]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,5 +18,16 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run tests
+    - name: Run Jest tests
       run: npm test
+
+    - name: Generate Cypress report
+      run: npx cypress run
+
+    - name: Upload test report
+      uses: actions/upload-artifact@v2
+      with:
+        name: test-report
+        path: |
+          reports/test-report.html
+          cypress/reports/report.html
