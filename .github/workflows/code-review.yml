@@ -1,21 +1,29 @@
-name: Code review
-on: [pull_request]
-jobs:
-  code-review:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      pull-requests: write
-    steps:
-      - uses: fxchen/code-review@latest
-        with:
-          model: 'gpt-3.5-turbo-16k'
-          openai-key: ${{ secrets.OPENAI_API_KEY }}
-          # prompt: |  # Commenting out the invalid input
-          #   Please review the code and provide suggestions for improvement.
-          #   - Check for any logical errors or inconsistencies.
-          #   - Suggest optimizations or refactorings.
-          #   - Ensure best practices are followed (e.g., proper use of hooks, state management).
-          #   - Check for any potential security vulnerabilities.
-          #   - Provide general feedback on code readability and maintainability.
+name: AICodeBot
 
+on: [push,pull_request]
+
+# Permissions for the GitHub token.
+# This is so the bot can comment on the commit or pull request with the results of the code review.
+permissions:
+  pull-requests: write
+  issues: write
+  contents: write
+
+jobs:
+  review:
+    name: AICodeBot Code Review
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v3
+        with:
+          # Full git history is needed to get a proper list of changed files
+          fetch-depth: 0
+
+      - name: AICodeBot Code Review
+        uses: TechNickAI/AICodeBot-action@v1
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          openai_api_key: ${{ secrets.OPENAI_API_KEY }}
