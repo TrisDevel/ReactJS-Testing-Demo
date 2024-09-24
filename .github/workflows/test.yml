@@ -1,4 +1,6 @@
-name: Test and Report
+
+name: Testing
+
 
 on: [push, pull_request]
 
