@@ -15,7 +15,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test  -- --detectOpenHandles",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -37,6 +37,7 @@
     ]
   },
   "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "jest": "^27.5.1",
     "mocha": "^10.7.3",
     "mocha-allure-reporter": "^1.4.0"
