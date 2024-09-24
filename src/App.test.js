@@ -13,7 +13,7 @@ test("button click changes text", () => {
   render(<App />);
   const buttonElement = screen.getByRole("button");
   fireEvent.click(buttonElement);
-  const updatedText = screen.getByText(/Updated Text/i);
+  const updatedText = screen.getByText(/After you click 'Click me' button, the text will be updated/i);
   expect(updatedText).toBeInTheDocument();
 });
 
