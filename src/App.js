@@ -8,7 +8,7 @@ function App() {
     <Router>
       <div>
         <h1>{text}</h1>
-        <button onClick={() => setText("After you click 'Click me' button, the text will be updated")}>Click me</button>
+        <button onClick={() => setText("After you click 'Click me' button")}>Click me</button>
         <nav>
           <ul>
             <li>
