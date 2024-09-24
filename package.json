@@ -35,5 +35,10 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "jest": "^27.5.1",
+    "mocha": "^10.7.3",
+    "mocha-allure-reporter": "^1.4.0"
   }
 }
