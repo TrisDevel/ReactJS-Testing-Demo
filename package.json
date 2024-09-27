@@ -41,6 +41,9 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-react": "^7.24.7",
+    "babel-jest": "^29.7.0",
     "jest": "^27.5.1",
     "mocha": "^10.7.3",
     "mocha-allure-reporter": "^1.4.0"
