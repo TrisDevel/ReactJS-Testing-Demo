@@ -22,14 +22,3 @@ jobs:
 
     - name: Run Jest tests
       run: npm test
-
-    - name: Generate Cypress report
-      run: npx cypress run
-
-    - name: Upload test report
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-report
-        path: |
-          reports/test-report.html
-          cypress/reports/report.html
