@@ -151,41 +151,8 @@ function Contact() {
 
 function Blog() {
   const codeString = `
-name: Testing
-
-on: [push, pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run Jest tests
-      run: npm test
-
-    - name: Generate Cypress report
-      run: npx cypress run
-
-    - name: Upload test report
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-report
-        path: |
-          reports/test-report.html
-          cypress/reports/report.html
-  `;
-
+  
+`
   const [activeSection, setActiveSection] = useState("yaml");
 
   const toggleSection = (section) => {
@@ -260,9 +227,10 @@ jobs:
               separated by a comma (,). Here is an example of a simple YAML
               file:
             </p>
-            <SyntaxHighlighter language="javascript" style={tomorrow}>
+            
+            <p>
               {codeString}
-            </SyntaxHighlighter>
+            </p>
           </div>
         )}
 

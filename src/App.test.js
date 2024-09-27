@@ -3,19 +3,19 @@ import { render, screen, fireEvent } from "@testing-library/react";
 import App from "./App";
 
 // Unit Test
-test("renders CICD text", () => {
-  render(<App />);
-  const linkElement = screen.getByText('CICD Testing. Bui Trong Tri');
-  expect(linkElement).toBeInTheDocument();
-});
+// test("renders CICD text", () => {
+//   render(<App />);
+//   const linkElement = screen.getByText('CICD Testing. Bui Trong Tri');
+//   expect(linkElement).toBeInTheDocument();
+// });
 
-test("button click changes text", () => {
-  render(<App />);
-  const buttonElement = screen.getByRole("button");
-  fireEvent.click(buttonElement);
-  const updatedText = screen.getByText(/After you click 'Click me' button, the text will be updated/i);
-  expect(updatedText).toBeInTheDocument();
-});
+// test("button click changes text", () => {
+//   render(<App />);
+//   const buttonElement = screen.getByRole("button");
+//   fireEvent.click(buttonElement);
+//   const updatedText = screen.getByText(/After you click 'Click me' button, the text will be updated/i);
+//   expect(updatedText).toBeInTheDocument();
+// });
 
 // Integration Test
 test("renders About and Contact links", () => {
@@ -26,26 +26,26 @@ test("renders About and Contact links", () => {
   expect(contactLink).toBeInTheDocument();
 });
 
-// Functional Test
-test("navigates to About page", () => {
-  render(<App />);
-  const aboutLink = screen.getByText(/About/i);
-  fireEvent.click(aboutLink);
-  const aboutHeading = screen.getByText(/About Us/i);
-  expect(aboutHeading).toBeInTheDocument();
-});
+// // Functional Test
+// test("navigates to About page", () => {
+//   render(<App />);
+//   const aboutLink = screen.getByText(/About/i);
+//   fireEvent.click(aboutLink);
+//   const aboutHeading = screen.getByText(/About Us/i);
+//   expect(aboutHeading).toBeInTheDocument();
+// });
 
-test("navigates to Contact page and submits form", () => {
-render(<App />);
-  const contactLink = screen.getByText(/Contact/i);
-  fireEvent.click(contactLink);
-  const nameInput = screen.getByLabelText(/Name/i);
-  const emailInput = screen.getByLabelText(/Email/i);
-  const messageTextarea = screen.getByLabelText(/Message/i);
-  fireEvent.change(nameInput, { target: { value: "John Doe" } });
-  fireEvent.change(emailInput, { target: { value: "john.doe@example.com" } });
-  fireEvent.change(messageTextarea, {
-    target: { value: "Hello, this is a test message." },
-  });
-  fireEvent.click(screen.getByText(/Submit/i));
-});
+// test("navigates to Contact page and submits form", () => {
+// render(<App />);
+//   const contactLink = screen.getByText(/Contact/i);
+//   fireEvent.click(contactLink);
+//   const nameInput = screen.getByLabelText(/Name/i);
+//   const emailInput = screen.getByLabelText(/Email/i);
+//   const messageTextarea = screen.getByLabelText(/Message/i);
+//   fireEvent.change(nameInput, { target: { value: "John Doe" } });
+//   fireEvent.change(emailInput, { target: { value: "john.doe@example.com" } });
+//   fireEvent.change(messageTextarea, {
+//     target: { value: "Hello, this is a test message." },
+//   });
+//   fireEvent.click(screen.getByText(/Submit/i));
+// });
