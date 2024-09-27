@@ -122,27 +122,32 @@ function About() {
 }
 
 function Contact() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name || !email || !message) {
+      alert("Please fill in all fields");
+      return;
+    }
+    // Logic để xử lý gửi form (nếu cần)
+  };
+
   return (
-    <form
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        marginBottom: "20px",
-      }}
-    >
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
       <label style={{ marginBottom: "20px" }}>
         Name:
-        <input type="text" name="name" />
+        <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
       </label>
       <label style={{ marginBottom: "20px" }}>
         Email:
-        <input type="email" name="email" />
+        <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </label>
       <label>
         Message:
-        <textarea name="message"></textarea>
+        <textarea name="message" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
       </label>
       <button type="submit">Submit</button>
     </form>
@@ -255,18 +260,18 @@ function BmiCalculator() {
   const [bmi, setBmi] = useState(null);
 
   const calculateBMI = () => {
-    if (weight && height) {
-      const heightInMeters = height / 100;
-      const calculatedBMI = weight / (heightInMeters * heightInMeters);
-      setBmi(calculatedBMI.toFixed(2));
-    } else {
+    if (!weight || !height) {
       alert("Please enter both weight and height");
+      return;
     }
+    const heightInMeters = height / 100;
+    const calculatedBMI = weight / (heightInMeters * heightInMeters);
+    setBmi(calculatedBMI.toFixed(2));
   };
 
   return (
     <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
-      <h2>BMI Calculator</h2>
+      <h2>BMI</h2>
       <input
       style={{marginBottom: "20px"}}
         type="number"
