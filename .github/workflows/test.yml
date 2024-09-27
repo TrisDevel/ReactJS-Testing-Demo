@@ -1,7 +1,6 @@
 
 name: Testing
 
-
 on: [push, pull_request]
 
 jobs:
@@ -20,5 +19,5 @@ jobs:
     - name: Install dependencies
       run: npm install
 
-    - name: Run Jest tests
+    - name: Run tests
       run: npm test
