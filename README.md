@@ -44,5 +44,12 @@ npm run test:watch
 ├── test/               # Test file
 ├── package.json         # Project metadata
 └── README.md            # Documentation
-
 ```
+## ❓ **Have Questions?**
+If you have any questions, feel free to open an issue in the repository or contact me at:
+* Email: [buitrongtri2004@gmail.com](mailto:buitrongtri2004@gmail.com).
+  
+I'm happy to help! 😊
+
+##
+ **Happy coding! 🎉**
