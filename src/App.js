@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { BrowserRouter as Router, Route, Routes, Link } from "react-router-dom";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+// import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+// import { tomorrow } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 
@@ -121,27 +122,32 @@ function About() {
 }
 
 function Contact() {
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!name || !email || !message) {
+      alert("Please fill in all fields");
+      return;
+    }
+    // Logic để xử lý gửi form (nếu cần)
+  };
+
   return (
-    <form
-      style={{
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        justifyContent: "center",
-        marginBottom: "20px",
-      }}
-    >
+    <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", marginBottom: "20px" }}>
       <label style={{ marginBottom: "20px" }}>
         Name:
-        <input type="text" name="name" />
+        <input type="text" name="name" value={name} onChange={(e) => setName(e.target.value)} />
       </label>
       <label style={{ marginBottom: "20px" }}>
         Email:
-        <input type="email" name="email" />
+        <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </label>
       <label>
         Message:
-        <textarea name="message"></textarea>
+        <textarea name="message" value={message} onChange={(e) => setMessage(e.target.value)}></textarea>
       </label>
       <button type="submit">Submit</button>
     </form>
@@ -150,41 +156,8 @@ function Contact() {
 
 function Blog() {
   const codeString = `
-name: Testing
-
-on: [push, pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v2
-
-    - name: Set up Node.js
-      uses: actions/setup-node@v2
-      with:
-        node-version: '14'
-
-    - name: Install dependencies
-      run: npm install
-
-    - name: Run Jest tests
-      run: npm test
-
-    - name: Generate Cypress report
-      run: npx cypress run
-
-    - name: Upload test report
-      uses: actions/upload-artifact@v2
-      with:
-        name: test-report
-        path: |
-          reports/test-report.html
-          cypress/reports/report.html
-  `;
-
+  
+`
   const [activeSection, setActiveSection] = useState("yaml");
 
   const toggleSection = (section) => {
@@ -259,9 +232,10 @@ jobs:
               separated by a comma (,). Here is an example of a simple YAML
               file:
             </p>
-            <SyntaxHighlighter language="javascript" style={tomorrow}>
+            
+            <p>
               {codeString}
-            </SyntaxHighlighter>
+            </p>
           </div>
         )}
 
@@ -286,18 +260,18 @@ function BmiCalculator() {
   const [bmi, setBmi] = useState(null);
 
   const calculateBMI = () => {
-    if (weight && height) {
-      const heightInMeters = height / 100;
-      const calculatedBMI = weight / (heightInMeters * heightInMeters);
-      setBmi(calculatedBMI.toFixed(2));
-    } else {
+    if (!weight || !height) {
       alert("Please enter both weight and height");
+      return;
     }
+    const heightInMeters = height / 100;
+    const calculatedBMI = weight / (heightInMeters * heightInMeters);
+    setBmi(calculatedBMI.toFixed(2));
   };
 
   return (
     <div style={{display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center"}}>
-      <h2>BMI Calculator</h2>
+      <h2>BMI</h2>
       <input
       style={{marginBottom: "20px"}}
         type="number"
