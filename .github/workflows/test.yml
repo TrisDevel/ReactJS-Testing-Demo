@@ -32,10 +32,12 @@ jobs:
 
     - name: Install GitHub CLI
       run: |
-        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o /usr/share/keyrings/githubcli-archive-keyring.gpg
-        echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
-        apt update
-        apt install gh -y
+        mkdir -p $HOME/.apt/sources.list.d
+        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o $HOME/.apt/githubcli-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=$HOME/.apt/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee $HOME/.apt/sources.list.d/github-cli.list > /dev/null
+        sudo cp -r $HOME/.apt/* /etc/apt/
+        sudo apt update
+        sudo apt install gh -y
 
     - name: Merge pull request
       run: gh pr merge ${{ github.event.pull_request.number }} --merge
