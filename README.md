@@ -1,19 +1,48 @@
-# Getting Started 
+# **ReactJS Testing Demo** ![Node Version](https://img.shields.io/badge/node-%3E%3D%2014.x-green) ![License](https://img.shields.io/github/license/TrisDevel/ReactJS-Testing-Demo) ![Test Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)
 
-CLone repository: https://github.com/TrisDevel/ReactJS-Testing-Demo.git
+> A simple ReactJS demo project focused on testing.
 
-## Once you have the project folder you can run it after doing the following steps
+---
 
-In the terminal, run the following commands:
+## 🚀 **Getting Started**
 
-### `npm install`
+Clone the repository by running the following command in your terminal:
 
-This will install the dependencies for the project.
+```bash
+git clone https://github.com/TrisDevel/ReactJS-Testing-Demo.git
+```
+```bash
+cd ReactJS-Testing-Demo
+```
 
-### `npm run test`
+## ⚙️ **Install Dependencies**
 
-This will run the tests for the project.
+```bash
+npm install
+```
 
-You can also run the tests in watch mode by running `npm run test:watch`
+## 🔍  **Running Tests**
+🧪  **Run All Tests**
+To run the tests, use the following command:
+```bash
+npm run test
+```
+🔄 **Watch Mode**
+Run the tests in watch mode to see the changes immediately:
+```bash
+npm run test:watch
+```
+📊 **Test Coverage**
+To see the test coverage, run:
+```bash
+npm run test:watch
+```
+📂 **Project Structure**
+```bash
+.
+├── src/                 # Source code
+├── test/               # Test file
+├── package.json         # Project metadata
+└── README.md            # Documentation
 
-You can also run the tests in coverage mode by running `npm run test:coverage`
+```
