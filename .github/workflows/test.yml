@@ -19,4 +19,24 @@ jobs:
         run: npm install
 
       - name: Run tests
-        run: npm test 
+        run: npm test
+
+  merge:
+    needs: test
+    runs-on: ubuntu-latest
+    if: success()
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install GitHub CLI
+      run: sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0 && \
+            sudo apt-add-repository https://cli.github.com/packages && \
+            sudo apt update && \
+            sudo apt install gh -y
+
+    - name: Merge pull request
+      run: gh pr merge ${{ github.event.pull_request.number }} --merge
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
