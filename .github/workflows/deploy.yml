@@ -24,8 +24,31 @@ jobs:
     - name: Run tests
       run: npm test
 
-  deploy:
+  merge:
     needs: test
+    runs-on: ubuntu-latest
+    if: success()
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+
+    - name: Install GitHub CLI
+      run: |
+        mkdir -p $HOME/.apt/sources.list.d
+        curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | gpg --dearmor -o $HOME/.apt/githubcli-archive-keyring.gpg
+        echo "deb [arch=$(dpkg --print-architecture) signed-by=$HOME/.apt/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee $HOME/.apt/sources.list.d/github-cli.list > /dev/null
+        sudo cp -r $HOME/.apt/* /etc/apt/
+        sudo apt update
+        sudo apt install gh -y
+
+    - name: Merge pull request
+      run: gh pr merge ${{ github.event.pull_request.number }} --merge
+      env:
+        GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+
+  deploy:
+    needs: merge
     runs-on: ubuntu-latest
     if: success()
 
