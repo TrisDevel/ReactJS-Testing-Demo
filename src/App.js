@@ -6,7 +6,6 @@ import Carousel from "react-bootstrap/Carousel";
 import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
-  const [text, setText] = useState("Information CI/CD Testing");
   return (
     <div>
       <Router>
