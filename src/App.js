@@ -132,7 +132,6 @@ function Contact() {
       alert("Please fill in all fields");
       return;
     }
-    // Logic để xử lý gửi form (nếu cần)
   };
 
   return (
@@ -239,7 +238,7 @@ function Blog() {
           </div>
         )}
 
-        {activeSection === "github" && ( // Hiển thị nội dung GitHub Action khi phần được mở
+        {activeSection === "github" && ( 
           <div>
             <h1>GitHub Action</h1>
             <p>
@@ -251,7 +250,7 @@ function Blog() {
         )}
       </div>
     </div>
-  ); // Thêm dấu ngoặc nhọn ở đây
+  ); 
 }
 
 function BmiCalculator() {

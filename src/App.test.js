@@ -48,7 +48,6 @@ describe('App Component', () => {
     fireEvent.change(screen.getByLabelText(/Email:/i), { target: { value: 'john@example.com' } });
     fireEvent.change(screen.getByLabelText(/Message:/i), { target: { value: 'Hello!' } });
     fireEvent.click(screen.getByText(/Submit/i));
-    // Add assertion for form submission if needed
   });
 
 
@@ -62,13 +61,12 @@ describe('App Component', () => {
 
   test('calculates BMI correctly', () => {
     render(<App />);
-    fireEvent.click(screen.getByText(/BMI Calculator/i)); // Nhấp vào liên kết "BMI Calculator"
+    fireEvent.click(screen.getByText(/BMI Calculator/i)); 
     
-    // Nhập trọng lượng và chiều cao
     fireEvent.change(screen.getByPlaceholderText(/Weight \(kg\)/i), { target: { value: '70' } });
     fireEvent.change(screen.getByPlaceholderText(/Height \(cm\)/i), { target: { value: '175' } });
     
-    fireEvent.click(screen.getByText(/Calculate/i)); // Nhấp vào nút "Calculate"
+    fireEvent.click(screen.getByText(/Calculate/i)); 
     
     const bmiResult = screen.getByText(/Your BMI is:/i);
     expect(bmiResult).toBeInTheDocument();
@@ -76,10 +74,10 @@ describe('App Component', () => {
 
   test('shows error alert when weight or height is missing', () => {
     render(<App />);
-    fireEvent.click(screen.getByText(/BMI Calculator/i)); // Nhấp vào liên kết "BMI Calculator"
-    fireEvent.click(screen.getByText(/Calculate/i)); // Nhấp vào nút "Calculate"
+    fireEvent.click(screen.getByText(/BMI Calculator/i));
+    fireEvent.click(screen.getByText(/Calculate/i)); 
     
-    // Kiểm tra xem alert có được gọi không
+
     expect(window.alert).toHaveBeenCalledWith('Please enter both weight and height');
   });
 });
